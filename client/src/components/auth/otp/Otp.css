@@ -1,0 +1,97 @@
+.otp-container{
+    width: 100vw;
+    height: 100vh;
+    max-width: 100%;
+    display: flex;
+    justify-content: center;
+    top: 0;
+    left: 0;
+}
+
+.otp-content{
+    width: 25vw;
+    height: 50vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50px;
+    box-shadow: 0 0 10px gray;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.otp-head{
+    width: 100%;
+    background-color: crimson;
+    border-radius: 10px;
+    >h1{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        text-transform: uppercase;
+        padding: 10px;
+    }
+    >p{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        text-align: center;
+        font-size: 12px;
+        text-transform: uppercase;
+        padding: 10px;
+    }
+}
+
+.otp-input-section{
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    place-items: center;
+    margin-top: 20px;
+    >input{
+        width: 70px;
+        height: 70px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        border: none;
+        outline: none;
+        border-radius: 10px;
+        box-shadow: 0 0 3px gray;
+        cursor: pointer;
+    }
+    >input:focus{
+        box-shadow: 0 0 10px gray;
+    }
+}
+
+.otp-verify-btn{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 30px;
+    >button{
+        width: 100%;
+        padding: 1vmax 3vmax;
+        color: white;
+        background-color: crimson;
+        font-size: 20px;
+        text-transform: uppercase;
+        border-radius: 10px;
+        border: none;
+        outline: none;
+        cursor: pointer;
+    }
+}
+
+@media screen and (max-width: 700px){
+    .otp-content{
+        width: 90%;
+        height: 40vh;
+    }
+}

@@ -1,0 +1,66 @@
+@import url(https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;800;900&display=swap);
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+a{
+    text-decoration: none;
+}
+
+.red{
+    background-color: red;
+    color: white;
+}
+
+.green{
+    background-color: green;
+    color: white;
+}
+
+.green-violet {
+    background: linear-gradient(to right bottom, rgb(153, 3, 153) 50%, green 50%);
+    color: white;
+}
+
+.red-violet{
+    background: linear-gradient(to right bottom, rgb(153, 3, 153) 50%, red 50%);
+    color: white;
+}
+
+.violet{
+    background-color: rgb(153, 3, 153);
+    color: white;
+}
+
+.red-ball{
+    width: 20px;
+    height: 20px;
+    border-radius: 100%;
+    background-color: red;
+}
+
+.green-ball{
+    width: 20px;
+    height: 20px;
+    border-radius: 100%;
+    background-color: green;
+}
+
+.violet-ball{
+    width: 20px;
+    height: 20px;
+    border-radius: 100%;
+    background-color: rgb(153, 3, 153);
+}
+
+.ball {
+    >div{
+        margin: auto;
+    }
+}
