@@ -66,6 +66,28 @@ const Recharge = () => {
                 <div className="payment-btn recharge-btn">
                     <button onClick={payHandler}>Pay</button>
                 </div>
+                <div className="payment-table">
+                    <table>
+                        <tr>
+                            <th>Payment ID</th>
+                            <th>Amount</th>
+                            <th>Status</th>
+                            <th>Date</th>
+                        </tr>
+                        {
+                            user && user.recharges && user.recharges.map((item, index) => {
+                                return (
+                                    <tr key={index}>
+                                        <td>{item.paymentId}</td>
+                                        <td>{item.amount}</td>
+                                        <td style={{textTransform: "capitalize"}}>{item.status ? "true" : "false"}</td>
+                                        <td>{item.paidAt && item.paidAt.split("T")[0]}</td>
+                                    </tr>
+                                )
+                            })
+                        }
+                    </table>
+                </div>
             </div>
         </div>
     )

@@ -7,7 +7,7 @@ import toast from 'react-hot-toast'
 
 let currentOtpIndex  = 0
 
-const Otp = ({ name, email, password }) => {
+const Otp = ({ name, email, password, setGetUser }) => {
   const [inputOtp, setInputOtp] = useState(new Array(4).fill(""))
   const [activeOtpIndex, setActiveOtpIndex] = useState(0)
   const inputRef = useRef(null)
@@ -25,6 +25,7 @@ const Otp = ({ name, email, password }) => {
     if(Number(userOtp) === otp){
       await dispatch(signup(name, email, password))
       await dispatch({ type: "CLEAR_OTP" })
+      setGetUser(false)
     }else{
       toast.error("wrong otp")
     }

@@ -119,3 +119,11 @@ export const resetPassword = async (req, res) => {
         return sendError(res, 500, error.message)
     }
 }
+
+export const logout = async (req, res) => {
+    try{
+        sendToken(res, null, false, "logout successfully")
+    }catch(error){
+        return sendError(res, 500, error.message)
+    }
+}

@@ -49,6 +49,20 @@ export const login = (email, password) => async (dispatch) => {
     }
 }
 
+export const logout = () => async (dispatch) => {
+    try{
+        dispatch({ type: "LOGOUT_REQUEST" })
+        const { data } = await axios.get(`${REQUEST_URL}/logout`, GET)
+        dispatch({ type: "LOGOUT_SUCCESS", payload: data.message })
+    }catch(error){
+        if(error.response){
+            dispatch({ type: "LOGOUT_FAIL", payload: error.response.data.message })
+        }else{
+            dispatch({ type: "LOGOUT_FAIL", payload: error.message })
+        }
+    }
+}
+
 export const loadUser = () => async (dispatch) => {
     try{
         dispatch({ type: "LOAD_USER_REQUEST" })

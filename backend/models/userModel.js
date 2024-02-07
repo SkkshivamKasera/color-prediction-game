@@ -28,6 +28,17 @@ const userSchema = new mongoose.Schema({
             paidAt: Date
         }
     ],
+    withdraws: [
+        {
+            paymentId: String,
+            amount: Number,
+            status: {
+                type: String,
+                default: "pending"
+            },
+            withdrawAt: Date
+        }
+    ],
     createdAT: {
         type: Date,
         default: Date.now

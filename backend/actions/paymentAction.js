@@ -75,6 +75,15 @@ export const paymentVerification = async (req, res) => {
     }
 }
 
+function generatePaymentId(length) {
+    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    let paymentId = '';
+    for (let i = 0; i < length; i++) {
+        paymentId += characters.charAt(Math.floor(Math.random() * characters.length));
+    }
+    return paymentId;
+}
+
 export const withdraw = async (req, res) => {
     try{
         const { amount } = req.body
@@ -84,6 +93,13 @@ export const withdraw = async (req, res) => {
             return sendError(res, 400, "withdrawal amount is invalid")
         }
         user.balance -= Number(amount)
+        const paymentId = await generatePaymentId(24)
+        user.withdraws.unshift({
+            paymentId: paymentId,
+            amount: amount,
+            status: "pending",
+            withdrawAt: new Date(Date.now())
+        })
         await user.save()
         return res.status(200).json({ success: true, message: "Withdraw Successfully" })
     }catch(error){

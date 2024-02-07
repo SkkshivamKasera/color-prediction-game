@@ -2,7 +2,7 @@ import express from 'express'
 import passport from 'passport'
 import dotenv from 'dotenv'
 import jwt from 'jsonwebtoken'
-import { forgotPassword, getMyProfile, getOtp, login, resetPassword, signup } from './actions/userAction.js'
+import { forgotPassword, getMyProfile, getOtp, login, logout, resetPassword, signup } from './actions/userAction.js'
 import { isAuthenticated } from './middleware.js'
 import { applyBet, fetchGameData, updateGameData, winningLosingPeriod } from './actions/gameAction.js'
 import { createOrder, paymentVerification, withdraw } from './actions/paymentAction.js'
@@ -36,6 +36,7 @@ router.route("/login_pass").post(login)
 router.route("/myprofile").get(isAuthenticated, getMyProfile)
 router.route("/password/forgot").post(forgotPassword)
 router.route("/password/reset/:id").post(resetPassword)
+router.route("/logout").get(isAuthenticated, logout)
 
 //games routers
 router.route("/fetchgamedata").get(isAuthenticated, fetchGameData)

@@ -97,11 +97,11 @@ function App() {
         <Routes>
           <Route exact path='/' element={<ProtectedRoute isAuthenticated={isAuthenticated}><Home betAmount={betAmount} setBetAmount={setBetAmount} formatCounter={formatCounter} counter={counter} setCounter={setCounter} setGetUser={setGetUser} betColor={betColor} setBetColor={setBetColor}/></ProtectedRoute>} />
 
-          <Route exact path='/login' element={<Login />}></Route>
+          <Route exact path='/login' element={<Login setGetUser={setGetUser}/>}></Route>
 
           <Route exact path='/signup' element={<SignUp name={name} setName={setName} email={email} setEmail={setEmail} password={password} setPassword={setPassword} />}></Route>
 
-          <Route exact path='/otp' element={<Otp name={name} email={email} password={password} />}></Route>
+          <Route exact path='/otp' element={<Otp setGetUser={setGetUser} name={name} email={email} password={password} />}></Route>
           
           <Route exact path='/password/forgot' element={<ForgotPassword />}></Route>
 

@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { login } from '../../../redux/actions/userAction'
 import { REQUEST_URL } from '../../../redux/store'
 
-const Login = () => {
+const Login = ({setGetUser}) => {
     const [isHidePass, setIsHidePass] = useState(true)
     const { isAuthenticated } = useSelector(state => state.user)
     const navigate = useNavigate()
@@ -18,6 +18,7 @@ const Login = () => {
     const loginHandler = async (e) => {
         e.preventDefault()
         await dispatch(login(email, password))
+        setGetUser(false)
     }
 
     const loginWithGoogle = () => {
@@ -28,7 +29,7 @@ const Login = () => {
         if(isAuthenticated){
             navigate("/")
         }
-    }, [isAuthenticated])
+    }, [isAuthenticated, navigate])
 
     return (
         <div className="auth-container">

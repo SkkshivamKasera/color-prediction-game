@@ -15,9 +15,12 @@ export const sendError = async (res, statusCode, message) => {
 
 export const sendToken = async (res, user, set, message) => {
     try{
-        const token = await jwt.sign({ id: user._id }, process.env.JWT_SIGN)
-        if(!token){
-            return sendError(res, 400, "Token Not Generated")
+        let token 
+        if(set){
+            token = await jwt.sign({ id: user._id }, process.env.JWT_SIGN)
+            if(!token){
+                return sendError(res, 400, "Token Not Generated")
+            }
         }
         return res.cookie("token", set ? token : null, {
             maxAge: set ? 24 * 60 * 60 * 1000 : 0

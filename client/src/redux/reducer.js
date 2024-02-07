@@ -59,6 +59,21 @@ export const userReducer = createReducer({ isAuthenticated: false }, (builder)=>
         state.isAuthenticated = false
         state.error = action.payload
     })
+    .addCase("LOGOUT_REQUEST", (state) => {
+        state.loading = true
+        state.isAuthenticated = true
+    })
+    .addCase("LOGOUT_SUCCESS", (state, action) => {
+        state.loading = false
+        state.isAuthenticated = false
+        state.user = null
+        state.message = action.payload
+    })
+    .addCase("LOGOUT_FAIL", (state, action) => {
+        state.loading = false
+        state.isAuthenticated = true
+        state.error = action.payload
+    })
     .addCase("FORGOT_PASSWORD_REQUEST", (state) => {
         state.loading = true
     })

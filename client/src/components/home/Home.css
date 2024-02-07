@@ -88,28 +88,21 @@
         text-align: center;
     }
 
-    /* Table.css */
-
     >table {
         width: 100%;
         border-collapse: collapse;
-        /* Collapse borders into a single border */
         margin-bottom: 20px;
     }
 
     >table th,
     >table td {
         padding: 8px;
-        /* Add padding for better spacing */
         border: 1px solid #ddd;
-        /* Add borders to table cells */
     }
 
     >table th {
         background-color: #f2f2f2;
-        /* Light gray background for table headers */
     }
-
 }
 
 .result-hed {

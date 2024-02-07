@@ -14,9 +14,8 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 50px;
+    margin-top: 10px;
     padding: 20px;
-    box-shadow: 0 0 10px gray;
     border-radius: 10px;
 }
 
@@ -76,13 +75,13 @@
 }
 
 .payment-numbers{
-    width: 100%;
+    width: 100% !important;
     display: flex;
     align-items: center;
     flex-direction: column;
     margin-top: 20px;
     >div{
-        width: 100%;
+        width: 100% !important;
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         place-items: center;
@@ -90,13 +89,13 @@
         color: white;
         margin-top: 10px;
         >div{
-            width: 100%;
+            width: 100% !important;
             border-radius: 10px;
             padding: 1vmax 3vmax;
             cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
             background-color: rgb(220, 20, 60, 0.5);
         }
     }
@@ -125,6 +124,36 @@
 #active_payment{
     background-color: crimson;
     color: wheat;
+}
+
+.payment-table {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+
+    >table {
+        width: 100%;
+        text-align: center;
+    }
+
+    >table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 20px;
+    }
+
+    >table th,
+    >table td {
+        padding: 8px;
+        border: 1px solid crimson;
+        font-size: 12px;
+    }
+
+    >table th {
+        background-color: crimson;
+        color: white;
+    }
 }
 
 @media screen and (max-width: 700px){

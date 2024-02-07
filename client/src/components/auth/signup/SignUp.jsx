@@ -27,7 +27,7 @@ const SignUp = ({ name, setName, email, setEmail, password, setPassword }) => {
         if(isAuthenticated){
             navigate("/")
         }
-    }, [isAuthenticated])
+    }, [isAuthenticated, navigate])
     
     return (
         <div className="auth-container">
