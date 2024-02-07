@@ -9,8 +9,8 @@ export const store = configureStore({
     }
 })
 
-// export const REQUEST_URL = "https://color-prediction-tts2.onrender.com/api/v1"
-export const REQUEST_URL = "http://localhost:5000/api/v1"
+export const REQUEST_URL = "https://color-prediction-tts2.onrender.com/api/v1"
+// export const REQUEST_URL = "http://localhost:5000/api/v1"
 
 export const POST = {
     headers: {
