@@ -28,7 +28,8 @@ const Home = ({ betAmount, setBetAmount, formatCounter, counter, setCounter, set
     if (betAmount > 0) {
       console.log(color, betColor)
       if (color === betColor) {
-        await dispatch(winOrLose(betAmount - 1))
+        const winAmount = (betAmount * 2) - 1
+        await dispatch(winOrLose(winAmount))
         await dispatch(updateGameData(period, betAmount, randomValue, color))
       } else {
         await dispatch(winOrLose(0 - betAmount))

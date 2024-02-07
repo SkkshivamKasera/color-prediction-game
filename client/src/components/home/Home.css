@@ -97,11 +97,12 @@
     >table th,
     >table td {
         padding: 8px;
-        border: 1px solid #ddd;
+        border: 1px solid crimson;
     }
 
     >table th {
-        background-color: #f2f2f2;
+        background-color: crimson;
+        color: white;
     }
 }
 
