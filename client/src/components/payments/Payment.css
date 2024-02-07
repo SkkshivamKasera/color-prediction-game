@@ -103,7 +103,7 @@
 }
 
 .payment-btn{
-    width: 100%;
+    width: 100% !important;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -111,7 +111,7 @@
     >button{
         background-color: crimson;
         color: white;
-        width: 100%;
+        width: 100% !important;
         font-size: 20px;
         text-transform: uppercase;
         border: none;

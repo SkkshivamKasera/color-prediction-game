@@ -77,22 +77,22 @@
 }
 
 .bet-numbers{
-    width: 100%;
+    width: 100% !important;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
     margin-top: 20px;
     >div{
-        width: 90%;
+        width: 90% !important;
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         gap: 20px;
         margin-bottom: 20px;
         >div{
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
             background-color: palegreen;
             color: black;
             padding: 1vmax 3vmax;
