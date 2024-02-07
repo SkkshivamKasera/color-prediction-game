@@ -1,6 +1,6 @@
 import './App.css';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
-import { ForgotPassword, Home, Login, Otp, Recharge, ResetPassword, SignUp, WithDraw } from './components';
+import { ForgotPassword, Home, Loader, Login, Otp, Recharge, ResetPassword, SignUp, WithDraw } from './components';
 import { ProtectedRoute } from "protected-route-react"
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -20,7 +20,7 @@ function App() {
 
   const dispatch = useDispatch()
   const { isAuthenticated, loading: authLoading, error: authError, message: authMessage } = useSelector(state => state.user)
-  const { loading: gameLoading, error: gameError, message: gameMessage } = useSelector(state => state.game)
+  const { error: gameError, message: gameMessage } = useSelector(state => state.game)
   const { loading: paymentLoading, error: paymentError, message: paymentMessage } = useSelector(state => state.payment)
 
   const [counter, setCounter] = useState(() => {
@@ -29,21 +29,22 @@ function App() {
   });
 
   useEffect(() => {
-    const timer = setInterval(() => {
-      setCounter((prevCounter) => {
-        if (prevCounter === 0) {
-          clearInterval(timer);
-          return 0;
-        }
-        // Decrease counter by 1 and update localStorage
-        const newCounter = prevCounter - 1;
-        localStorage.setItem('counter', newCounter.toString());
-        return newCounter;
-      });
-    }, 1000);
-
-    return () => clearInterval(timer);
-  }, []);
+    if(isAuthenticated){
+      const timer = setInterval(() => {
+        setCounter((prevCounter) => {
+          if (prevCounter === 0) {
+            clearInterval(timer);
+            return 0;
+          }
+          const newCounter = prevCounter - 1;
+          localStorage.setItem('counter', newCounter.toString());
+          return newCounter;
+        });
+      }, 1000);
+  
+      return () => clearInterval(timer);
+    }
+  }, [isAuthenticated]);
 
   const formatCounter = () => {
     const minutes = Math.floor(counter / 60);
@@ -90,7 +91,7 @@ function App() {
 
   return (
     authLoading || paymentLoading ? (
-      <div>Loading...</div>
+      <Loader />
     ) : (
       <Router>
         <Routes>

@@ -1,15 +1,16 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import "./Otp.css";
 import { useDispatch, useSelector } from 'react-redux'
 import { signup } from '../../../redux/actions/userAction';
 import toast from 'react-hot-toast'
 
+let currentOtpIndex  = 0
+
 const Otp = ({ name, email, password }) => {
-  const [userOtp_1, setUserOtp_1] = useState("")
-  const [userOtp_2, setUserOtp_2] = useState("")
-  const [userOtp_3, setUserOtp_3] = useState("")
-  const [userOtp_4, setUserOtp_4] = useState("")
+  const [inputOtp, setInputOtp] = useState(new Array(4).fill(""))
+  const [activeOtpIndex, setActiveOtpIndex] = useState(0)
+  const inputRef = useRef(null)
 
   const navigate = useNavigate();
 
@@ -17,7 +18,10 @@ const Otp = ({ name, email, password }) => {
   const { otp } = useSelector(state => state.user)
 
   const verifyOtp = async () => {
-    const userOtp = userOtp_1 + userOtp_2 + userOtp_3 + userOtp_4
+    let userOtp = ""
+    for(let i=0;i<inputOtp.length;i++){
+      userOtp += inputOtp[i]
+    }
     if(Number(userOtp) === otp){
       await dispatch(signup(name, email, password))
       await dispatch({ type: "CLEAR_OTP" })
@@ -26,12 +30,35 @@ const Otp = ({ name, email, password }) => {
     }
   }
 
+  const changeHandler = (e) => {
+    const value = e.target.value
+    const newOtp = [...inputOtp]
+    newOtp[currentOtpIndex] = value.substring(value.length - 1)
+    if(!value){
+      setActiveOtpIndex(currentOtpIndex - 1)
+    }else{
+      setActiveOtpIndex(currentOtpIndex + 1)
+    }
+    setInputOtp(newOtp)
+  }
+
+  const handleKeyDown = (e, index) => {
+    currentOtpIndex = index
+    if(e.key === "Backspace"){
+      setActiveOtpIndex(currentOtpIndex - 1)
+    }
+  }
+
   const { isAuthenticated } = useSelector(state => state.user)
     useEffect(() => {
         if(isAuthenticated){
             navigate("/")
         }
-    }, [isAuthenticated])
+    }, [isAuthenticated, navigate])
+
+    useEffect(() => {
+      inputRef.current?.focus()
+    }, [activeOtpIndex])
 
   return (
     <div className="otp-container">
@@ -41,10 +68,13 @@ const Otp = ({ name, email, password }) => {
           <p>Check your email and please enter OTP to continue</p>
         </div>
         <div className="otp-input-section">
-          <input type="text" name="" id="" maxLength={1} pattern='\d' inputMode='numeric' required value={userOtp_1} onChange={(e)=>setUserOtp_1(e.target.value)} />
-          <input type="text" name="" id="" maxLength={1} pattern='\d' inputMode='numeric' required value={userOtp_2} onChange={(e)=>setUserOtp_2(e.target.value)} />
-          <input type="text" name="" id="" maxLength={1} pattern='\d' inputMode='numeric' required value={userOtp_3} onChange={(e)=>setUserOtp_3(e.target.value)} />
-          <input type="text" name="" id="" maxLength={1} pattern='\d' inputMode='numeric' required value={userOtp_4} onChange={(e)=>setUserOtp_4(e.target.value)} />
+          {
+            inputOtp && inputOtp.map((_, index) => {
+              return (
+                <input onChange={changeHandler} ref={index === activeOtpIndex ? inputRef : null} type='number' value={inputOtp[index]} onKeyDown={(e) => handleKeyDown(e, index)}/>
+              )
+            })
+          }
         </div>
         <div className="otp-verify-btn">
           <button onClick={verifyOtp}>Verify OTP</button>

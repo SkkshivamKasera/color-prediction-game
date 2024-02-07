@@ -67,6 +67,9 @@
     >input:focus{
         box-shadow: 0 0 10px gray;
     }
+    >input::-webkit-inner-spin-button{
+        display: none;
+    }
 }
 
 .otp-verify-btn{
