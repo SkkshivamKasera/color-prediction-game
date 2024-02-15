@@ -1,4 +1,4 @@
-.payment-container{
+.payment-container {
     width: 100vw;
     height: 100vh;
     max-width: 100%;
@@ -8,7 +8,7 @@
     left: 0;
 }
 
-.payment-content{
+.payment-content {
     width: 35vw;
     height: 75vh;
     display: flex;
@@ -19,14 +19,15 @@
     border-radius: 10px;
 }
 
-.payment-head{
+.payment-head {
     width: 100%;
     background-color: crimson;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    >h1{
+
+    >h1 {
         padding: 1vmax 3vmax;
         text-align: center;
         display: flex;
@@ -36,7 +37,8 @@
         text-transform: uppercase;
         text-decoration: underline;
     }
-    >p{
+
+    >p {
         padding: 1vmax 3vmax;
         text-align: center;
         display: flex;
@@ -47,14 +49,15 @@
     }
 }
 
-.payment-input{
+.payment-input {
     width: 100%;
     position: relative;
     display: flex;
     align-items: center;
     margin-top: 30px;
     border-bottom: 4px solid crimson;
-    >input{
+
+    >input {
         width: 100%;
         padding: 1vmax 3vmax;
         text-align: center;
@@ -64,7 +67,7 @@
     }
 }
 
-.payment-rupee-svg{
+.payment-rupee-svg {
     position: absolute;
     width: 100px;
     height: 100px;
@@ -74,13 +77,14 @@
     justify-content: center;
 }
 
-.payment-numbers{
+.payment-numbers {
     width: 100% !important;
     display: flex;
     align-items: center;
     flex-direction: column;
     margin-top: 20px;
-    >div{
+
+    >div {
         width: 100% !important;
         display: grid;
         grid-template-columns: repeat(3, 1fr);
@@ -88,7 +92,8 @@
         gap: 10px;
         color: white;
         margin-top: 10px;
-        >div{
+
+        >div {
             width: 100% !important;
             border-radius: 10px;
             padding: 1vmax 3vmax;
@@ -101,13 +106,14 @@
     }
 }
 
-.payment-btn{
+.payment-btn {
     width: 100% !important;
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
     margin-top: 30px;
-    >button{
+
+    >button {
         background-color: crimson;
         color: white;
         width: 100% !important;
@@ -121,7 +127,7 @@
     }
 }
 
-#active_payment{
+#active_payment {
     background-color: crimson;
     color: wheat;
 }
@@ -156,9 +162,16 @@
     }
 }
 
-@media screen and (max-width: 700px){
-    .payment-content{
+@media screen and (max-width: 700px) {
+    .payment-content {
         width: 90%;
         height: 55vh;
+    }
+
+    .payment-table {
+        >table th,
+        >table td {
+            font-size: 9px;
+        }
     }
 }
